@@ -1,0 +1,213 @@
+//接线说明
+/*
+
+PA1	  TIM2_CH2
+PA2   TIM2_CH3
+PA3   TIM2_CH4
+PA6   TIM3_CH1
+PA7   TIM3_CH2
+PB0   TIM3_CH3
+
+//蓝牙
+PB10  usart3-tx
+PB11  usart3-rx
+
+//语音
+PC10	uart4-tx
+PC11  uart4-rx
+
+PC0   HC06_LED
+PF6		HC06_KEY
+
+//HMI
+PA2		USART2_TX
+PA3   USART2_RX
+
+PF9   PWM1左轮
+PF8   方向
+PF10	紧急
+
+PA7   PWM2右轮 TIM3-CH2
+PA6		方向
+PA8		紧急
+*/
+
+备份程序：
+		//**************************后期摄像头交互程序*****************************
+		else if(USART3_RX_BUF[2] == 'C' && USART3_RX_BUF[3] != 'F'&& USART3_RX_BUF[4] != 'F'&& USART3_RX_BUF[5] != 'F')
+		{
+			
+			if(reclen == 6)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[4]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[5]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			else if(reclen == 5)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[4]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			else if(reclen == 4)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			
+			delay_ms(100);
+			if(reclen == 6)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[4]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[5]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			else if(reclen == 5)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[4]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			else if(reclen == 4)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			
+			delay_ms(100);
+			if(reclen == 6)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[4]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[5]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			else if(reclen == 5)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[4]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			else if(reclen == 4)
+			{
+				USART_SendData(USART1, 'z');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, '0');         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+				USART_SendData(USART1, USART3_RX_BUF[3]);         //向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+			
+			delay_ms(100);
+			
+		//**************************************************************************
+		//**************************************************************************
+		
+				//**************************************************************************
+		//**************************************************************************
+		
+		
+		//*************************语音模块*****************************************
+		else if(USART3_RX_BUF[2] == 'B'&&USART3_RX_BUF[3] == '1')
+		{
+			RS485_Send_Data("@TextToSpeech#您好我叫小美，很高兴认识你$",100);
+		
+		}
+		else if(USART3_RX_BUF[2] == 'B'&&USART3_RX_BUF[3] == '2')
+		{
+			RS485_Send_Data("@TextToSpeech#在我左手边是众创空间，在我右手边是办公室$",100);
+		
+		}
+		else if(USART3_RX_BUF[2] == 'B'&&USART3_RX_BUF[3] == '3')
+		{
+			RS485_Send_Data("@TextToSpeech#请让一下可以吗$",100);
+			
+		}
+		else if(USART3_RX_BUF[2] == 'B'&&USART3_RX_BUF[3] == '4')
+		{
+			RS485_Send_Data("@TextToSpeech#厕所这边走到底就可以看到了$",100);
+			
+		}
+		else if(USART3_RX_BUF[2] == 'B'&&USART3_RX_BUF[3] == '5')
+		{
+			RS485_Send_Data("@TextToSpeech#现在请听我们工作人员介绍吧$",100);
+		
+		}
+		else if(USART3_RX_BUF[2] == 'B'&&USART3_RX_BUF[3] == '6')
+		{
+			RS485_Send_Data("@TextToSpeech#谢谢夸奖$",100);
+		
+		}
+		//**************************************************************************
+		//**************************************************************************
+		//与摄像头进行校正
+					USART_SendData(USART1, 'q');         //向串口1发送数据
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			USART_SendData(USART1, '0');         //向串口1发送数据
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			USART_SendData(USART1, '0');         //向串口1发送数据
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			USART_SendData(USART1, '0');         //向串口1发送数据
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			
+			
+			//限幅——到时候看一下正确xy坐标的取值范围进行限幅
+//	if(xpo < throttlex - xxian )
+//	{
+//		xpo = throttlex-xxian;
+//	}
+//	if(xpo > throttlex + xxian)
+//	{
+//		xpo = throttlex+xxian;
+//	}
+//	if(ypo < throttley- yxian)
+//	{
+//		ypo = throttley - yxian;
+//	}
+//	if(ypo > throttley + yxian)
+//	{
+//		ypo = throttley + yxian;
+//	}
